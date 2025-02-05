@@ -87,5 +87,3 @@ func FindSecondSmallestAndSecondLargest(arr []int) (int, int) {
 	}
 	return min2, max2
 }
-
-//Approach 2: Using sorting
