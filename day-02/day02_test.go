@@ -132,3 +132,49 @@ func TestRotateByReversal(t *testing.T) {
 		}
 	}
 }
+
+func TestRotateByKInRight(t *testing.T) {
+	tests := []struct {
+		input    []int
+		k        int
+		expected []int
+	}{
+		{[]int{1, 2, 3, 4, 5}, 2, []int{4, 5, 1, 2, 3}},
+		{[]int{1, 2, 3, 4, 5}, 3, []int{3, 4, 5, 1, 2}},
+		{[]int{1, 2, 3, 4, 5}, 5, []int{1, 2, 3, 4, 5}},
+		{[]int{1, 2, 3, 4, 5}, 0, []int{1, 2, 3, 4, 5}},
+		{[]int{1, 2, 3, 4, 5}, 1, []int{5, 1, 2, 3, 4}},
+		{[]int{1, 2, 3, 4, 5}, 7, []int{4, 5, 1, 2, 3}}, // k > len(input)
+	}
+
+	for _, test := range tests {
+		result := RotateByKInRight(test.input, test.k)
+		if !reflect.DeepEqual(result, test.expected) {
+			t.Errorf("For input %v and k %d, expected %v, but got %v", test.input, test.k, test.expected, result)
+		}
+	}
+
+}
+
+func TestRotateByTempRightArray(t *testing.T) {
+	tests := []struct {
+		input    []int
+		k        int
+		expected []int
+	}{
+		{[]int{1, 2, 3, 4, 5}, 2, []int{4, 5, 1, 2, 3}},
+		{[]int{1, 2, 3, 4, 5}, 3, []int{3, 4, 5, 1, 2}},
+		{[]int{1, 2, 3, 4, 5}, 5, []int{1, 2, 3, 4, 5}},
+		{[]int{1, 2, 3, 4, 5}, 0, []int{1, 2, 3, 4, 5}},
+		{[]int{1, 2, 3, 4, 5}, 1, []int{5, 1, 2, 3, 4}},
+		{[]int{1, 2, 3, 4, 5}, 7, []int{4, 5, 1, 2, 3}}, // k > len(input)
+	}
+
+	for _, test := range tests {
+		result := RotateByTempRightArray(test.input, test.k)
+		if !reflect.DeepEqual(result, test.expected) {
+			t.Errorf("For input %v and k %d, expected %v, but got %v", test.input, test.k, test.expected, result)
+		}
+	}
+
+}
