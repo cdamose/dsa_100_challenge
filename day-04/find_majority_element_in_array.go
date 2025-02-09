@@ -58,3 +58,29 @@ func FindMajorityElementUsingSorting(arr []int) int {
 }
 
 // using moore voting algorithm o(n) o(1)
+func FindMajorityElementUsingMooreVoting(arr []int) int {
+	majority := arr[0]
+	count := 1
+	for i := 1; i < len(arr); i++ {
+		if arr[i] == majority {
+			count++
+		} else {
+			count--
+		}
+		if count == 0 {
+			majority = arr[i]
+			count = 1
+		}
+	}
+	//check if majority element is present more than n/2 times
+	count = 0
+	for _, v := range arr {
+		if v == majority {
+			count++
+		}
+	}
+	if count > len(arr)/2 {
+		return majority
+	}
+	return 0
+}
